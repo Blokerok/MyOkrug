@@ -52,6 +52,15 @@
                                         placeholder="Введите название фотоконкурса" required>
                                 </div>
 
+                                <div class="icheck-primary d-inline">
+
+                                    <input type="checkbox" name="category_need" value="1"
+                                           id="checkboxSuccess3">
+                                    <label for="checkboxSuccess3">
+                                        Включить категории для участников
+                                    </label>
+                                </div>
+
                                 <div class="form-group">
                                     <label for="post_image">Описание фотоконкурса</label>
                                     <textarea name="text" class="editor" required>{{session('old.text')}}</textarea>

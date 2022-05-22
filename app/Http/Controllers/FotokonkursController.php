@@ -44,7 +44,16 @@ class FotokonkursController extends Controller
         AuthCackle::login_cackle();
         session()->put('user_url',URL::current());
 
-        return view('fotokonkurs.fotokonkurs_open', ['uchasthiki' => $uchasthiki, 'konkurs' => $konkurs_]);
+        $tabs = [];
+        if($konkurs_->category_need) {
+            foreach ($uchasthiki as $uchastnik) {
+                $tabs["Все"][] = $uchastnik;
+                if (!empty($uchastnik->category_name))
+                    $tabs[$uchastnik->category_name][] = $uchastnik;
+            }
+        }
+
+        return view('fotokonkurs.fotokonkurs_open', ['uchasthiki' => $uchasthiki, 'konkurs' => $konkurs_,'tabs' => $tabs]);
 
 
     }
@@ -99,7 +108,7 @@ class FotokonkursController extends Controller
         //$news_top = Novost::orderBy('visits', 'DESC')->take(5)->get();
 
 
-        return view('fotokonkurs.new_uchastnik', ['konkurs' => $konkurs_]);
+        return view('fotokonkurs.new_uchastnik', ['konkurs' => $konkurs_, 'categories'=>FotoKonkursMaterial::getCategories()]);
 
     }
 
@@ -113,6 +122,7 @@ class FotokonkursController extends Controller
         $post->title = $request->title;
         $post->h1 = $request->title;
         $post->description = $request->title;
+        $post->category_name = $request->category_name;
         $post->text = $request->text;
         $post->konkurs_id = $request->konkurs_id;
         $post->fio = $request->fio;

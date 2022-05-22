@@ -151,8 +151,8 @@
                           @else
                          @if(Auth::check()  && Auth::user()->email_verified_at!==NULL)
                         <div class="balloon-card__voting-variant {{$point->id}}">
-                                            <a href="#" data-id="{{$point->id}}" class="button-yes">Да!</a>
-                                            <a href="#" data-id="{{$point->id}}" class="button-no">Нет!</a>
+                                            <a href="#" data-id="{{$point->id}}" class="button-yes">Да!</a><span class=count-yes>({{$point->count_yes()}})</span>
+                                            <a href="#" data-id="{{$point->id}}" class="button-no">Нет!</a><span class=count-no>({{$point->count_no()}})</span>
                                         </div>
                                     @else
                             <div class="balloon-card__voting-title">Чтобы проголосовать требуется <a href="{{route('login')}}"><strong>авторизация</strong></a></div>

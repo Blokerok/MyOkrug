@@ -116,7 +116,7 @@
                         </div>
                         <div class="main-nav__item"><a href="#" class="main-nav__link">Гид по округу</a></div>
                         <div class="main-nav__item{{ request()->segment(1)=='odin-vopros' ? ' active' : '' }}"><a href="{{route('AllMaterial')}}" class="main-nav__link">Один вопрос</a></div>
-                        <div class="main-nav__item"><a href="#" class="main-nav__link">Журнал жителей</a></div>
+                        <div class="main-nav__item"><a href="{{url('info')}}" class="main-nav__link">ИнфоОкруг</a></div>
                         <div class="main-nav__item"><a href="#" class="main-nav__link">Анонсы</a></div>
                     </div>
                     <div class="main-nav__right">
@@ -227,10 +227,9 @@
                 </div>
 
                 <div class="f-soc">
-                    <div class="f-soc__item"><a href="https://www.instagram.com/moy_okrug/" target="_blank"><img src="{{ asset("public/images/soc-icon-inst.png")}}" alt="" /></a></div>
-                    <div class="f-soc__item"><a href="https://www.facebook.com/moyokrug" target="_blank"><img src="{{ asset("public/images/soc-icon-fb.png")}}" alt="" /></a></div>
                     <div class="f-soc__item"><a href="https://vk.com/moy_okrug" target="_blank"><img src="{{ asset("public/images/soc-icon-vk.png")}}" alt="" /></a></div>
                     <div class="f-soc__item"><a href="https://www.youtube.com/channel/UCtc2x8ZwIZQmuEI_z2YAH9w" target="_blank"><img src="{{ asset("public/images/soc-icon-youtube.png")}}" alt="" /></a></div>
+                    <div class="f-soc__item"><a href="https://t.me/moy_okrug" target="_blank"><img src="{{ asset("public/images/soc-icon-tg.png")}}" alt="" /></a></div>
                 </div>
             </div>
             <div class="footer__bottom">

@@ -39,7 +39,7 @@ class FotoKonkursMaterialController extends Controller
 
 
         return view('admin.fotokonkurs_materials.create', [
-            'konkurses' => $konkurses
+            'konkurses' => $konkurses, 'categories'=>FotoKonkursMaterial::getCategories()
         ]);
     }
 
@@ -61,6 +61,7 @@ class FotoKonkursMaterialController extends Controller
         $post->title = $request->title;
         $post->h1 = $request->title;
         $post->description = $request->title;
+        $post->category_name = $request->category_name;
         $post->text = $request->text;
         $post->konkurs_id = $request->konkurs_id;
         $post->fio = $request->fio;
@@ -219,7 +220,7 @@ class FotoKonkursMaterialController extends Controller
 
         return view('admin.fotokonkurs_materials.edit', [
             'konkurses' => $konkurses,
-            'post' => $uchastniki_fotokonkursov,
+            'post' => $uchastniki_fotokonkursov, 'categories'=>FotoKonkursMaterial::getCategories()
         ]);
     }
 
@@ -246,6 +247,8 @@ class FotoKonkursMaterialController extends Controller
         $novost->fio = $request->fio;
         $novost->email = $request->email;
         $novost->phone = $request->phone;
+        $novost->category_name = $request->category_name;
+
         if ($request->moder)
             $novost->moder = 1;
         else

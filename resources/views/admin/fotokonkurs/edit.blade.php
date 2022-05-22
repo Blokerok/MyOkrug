@@ -94,6 +94,16 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="icheck-primary d-inline">
+
+                                    <input type="checkbox" @if($post->category_need) checked @endif name="category_need" value="1"
+                                           id="checkboxSuccess3">
+                                    <label for="checkboxSuccess3">
+                                        Включить категории для участников
+                                    </label>
+                                </div>
+
                                 <div class="icheck-primary d-inline">
 
                                     <input type="checkbox" name="stop" @if($post->stop) checked @endif value="1"

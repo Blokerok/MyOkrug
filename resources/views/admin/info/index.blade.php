@@ -1,6 +1,6 @@
 @extends('layouts.admin_layout')
 
-@section('title', 'Банеры главной страницы')
+@section('title', 'Все статьи')
 
 @section('content')
     <!-- Content Header (Page header) -->
@@ -8,8 +8,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Банеры главной страницы</h1>
-
+                    <h1 class="m-0">Все позиции</h1>
                 </div><!-- /.col -->
             </div><!-- /.row -->
             @if (session('success'))
@@ -27,8 +26,7 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-body">
-
-                    <table id="table_list_baners" class="table table-bordered table-hover">
+                    <table id="table_list" class="table table-bordered table-hover">
                         <thead>
                         <tr>
                             <th style="width: 5%">
@@ -38,41 +36,32 @@
                                 Название
                             </th>
                             <th>
-                                Статус банера
+                                Категория
                             </th>
 
-                            <th style="width: 20%">
-                            </th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach ($baners as $baner)
+                        @foreach ($posts as $post)
                             <tr>
                                 <td>
-                                    {{ $baner['id'] }}
+                                    {{ $post['id'] }}
                                 </td>
                                 <td>
-                                    <a href="{{ route('baner.edit', $baner['id']) }}">{{ $baner['comment'] }}</a>
+                                    <a href="{{ route('info.edit', $post['id']) }}">{{ $post['title'] }}</a>
                                 </td>
-
-
-
                                 <td>
-                                    @if($baner['status'])
-                                        <strong>Показывается</strong>
-                                    @else
-                                        Не показывается
-                                    @endif
+                                    {{ $post->category['title'] }}
                                 </td>
 
 
                                 <td class="project-actions text-right">
-                                    <a class="btn btn-info btn-sm" href="{{ route('baner.edit', $baner['id']) }}">
+                                    <a class="btn btn-info btn-sm" href="{{ route('info.edit', $post['id']) }}">
                                         <i class="fas fa-pencil-alt">
                                         </i>
                                         Редактировать
                                     </a>
-                                    <form action="{{ route('baner.destroy', $baner['id']) }}" method="POST"
+                                    <form action="{{ route('info.destroy', $post['id']) }}" method="POST"
                                           style="display: inline-block">
                                         @csrf
                                         @method('DELETE')

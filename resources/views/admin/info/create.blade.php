@@ -1,6 +1,6 @@
 @extends('layouts.admin_layout')
 
-@section('title', 'Добавить материал')
+@section('title', 'Добавить позицию')
 
 @section('content')
     <!-- Content Header (Page header) -->
@@ -8,7 +8,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Добавить материал</h1>
+                    <h1 class="m-0">Добавить позицию</h1>
                 </div><!-- /.col -->
             </div><!-- /.row -->
 
@@ -20,13 +20,6 @@
 
             @enderror
 
-            @error('post_images.*')
-            <div class="alert alert-warning" role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                <h4><i class="icon fa fa-check"></i>{{ $message }}</h4>
-            </div>
-
-            @enderror
 
             @if (session('error_img'))
                 <div class="alert alert-warning" role="alert">
@@ -47,38 +40,31 @@
                 <div class="col-lg-12">
                     <div class="card card-primary">
                         <!-- form start -->
-                        <form action="{{ route('odinvopros.store') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('info.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Название</label>
-                                    <input type="text" name="title" class="form-control" id="exampleInputEmail1" placeholder="Введите название материала" value="{{session('old.title')}}" required>
+                                    <input type="text" name="title" class="form-control" id="exampleInputEmail1" placeholder="Введите название" value="{{session('old.title')}}" required>
                                 </div>
-                                <div class="icheck-primary d-inline">
-
-                                    <input type="checkbox" name="report" value="1"
-                                           id="checkboxSuccess3">
-                                    <label for="checkboxSuccess3">
-                                        Для отчета
-                                    </label>
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Ссылка на youtube ролик</label>
-                                    <input type="text" name="link_youtube" class="form-control" id="exampleInputEmail1" placeholder="Введите ссылку на youtube ролик" value="{{session('old.link_youtube')}}" required>
-                                </div>
-
 
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Сопроводительный текст к репортажу</label>
-                                    <textarea name="text" class="editor" required>{{session('old.text')}}</textarea>
+                                    <!-- select -->
+                                    <div class="form-group">
+                                        <label>Выберите категорию</label>
+                                        <select name="rubric_id" class="form-control" required>
+                                            @foreach ($categories as $category)
+                                                <option value="{{ $category['id'] }}" @if(session('old.rubric_id')==$category['id']) selected @endif>{{ $category['title'] }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                 </div>
-
 
                                 <div class="form-group">
 
-                                    <label for="post_image">Изображение для материала</label>
-                                    <img src="@if(file_exists(storage_path('app/public/news_image/'.session('old.img'))))
-                                    {{asset('public/storage/news_image/'.session('old.img'))}}
+                                    <label for="post_image">Изображение статьи</label>
+                                    <img src="@if(file_exists(storage_path('app/public/info_image/'.session('old.img'))))
+                                    {{asset('public/storage/info_image/'.session('old.img'))}}
                                     @endif" alt="" class="img-uploaded"
                                          style="display: block; width: 300px">
                                     <div class="custom-file">

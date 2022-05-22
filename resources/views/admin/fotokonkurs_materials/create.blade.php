@@ -65,6 +65,17 @@
                                         </select>
                                     </div>
                                 </div>
+                                 <div class="form-group">
+                                    <label>Категория</label>
+                                    <select name="category_name">
+                                        <option selected value="">Выберите категорию</option>
+                                        @foreach($categories as $category)
+                                            <option value="{{$category}}">{{$category}}</option>
+
+                                        @endforeach
+                                    </select>
+
+                                </div>
 
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">ФИО/имя приславшего</label>

@@ -62,6 +62,14 @@
                                     <input type="text" value="{{ $post['title'] }}" name="title" class="form-control"
                                            id="title" placeholder="Введите SEO Title статьи" required>
                                 </div>
+                                <div class="icheck-primary d-inline">
+
+                                    <input type="checkbox" name="report" @if($post->report) checked @endif value="1"
+                                           id="checkboxSuccess3">
+                                    <label for="checkboxSuccess3">
+                                        Для отчета
+                                    </label>
+                                </div>
                                 <div class="form-group">
                                     <label for="h1">Заголовок H1</label>
                                     <input type="text" value="{{ $post['h1'] }}" name="h1" class="form-control"

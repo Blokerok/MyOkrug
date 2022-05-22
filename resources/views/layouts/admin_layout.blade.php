@@ -158,6 +158,11 @@ with font-awesome or any other icon font library -->
                 <p>Все банеры</p>
             </a>
         </li>
+        <li class="nav-item">
+            <a href="{{ route('baner.create') }}" class="nav-link">
+                <p>Добавить банер</p>
+            </a>
+        </li>
     </ul>
 </li>
 
@@ -193,6 +198,39 @@ with font-awesome or any other icon font library -->
         </li>
     </ul>
 </li>
+
+    <li class="nav-item">
+        <a href="#" class="nav-link">
+            <i class="nav-icon far fa-newspaper"></i>
+            <p>
+                Организации
+                <i class="right fas fa-angle-left"></i>
+            </p>
+        </a>
+        <ul class="nav nav-treeview">
+            <li class="nav-item">
+                <a href="{{ route('info.index') }}" class="nav-link">
+                    <p>Все организации</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('inforubric.index') }}" class="nav-link">
+                    <p>Рубрики</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('info.create') }}" class="nav-link">
+                    <p>Добавить организацию</p>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="{{ route('inforubric.create') }}" class="nav-link">
+                    <p>Добавить рубрику</p>
+                </a>
+            </li>
+        </ul>
+    </li>
 
 <li class="nav-item">
     <a href="#" class="nav-link">

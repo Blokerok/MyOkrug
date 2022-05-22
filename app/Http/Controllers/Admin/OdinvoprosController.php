@@ -64,7 +64,10 @@ class OdinvoprosController extends Controller
         $post->link_youtube  = 'https://www.youtube.com/embed/'.$link[1];
         $post->text = $request->text;
         $post->user_id = $user->id;
-
+        if ($request->report)
+            $post->report = 1;
+        else
+            $post->report = 0;
 
            session(['old' => $post]);
 
@@ -166,6 +169,11 @@ class OdinvoprosController extends Controller
         $novost->description = $request->description;
         $novost->link_youtube  = 'https://www.youtube.com/embed/'.$link[1];
         $novost->h1 = $request->h1;
+        if ($request->report)
+            $novost->report = 1;
+        else
+            $novost->report = 0;
+
 
         $date_time_mass = explode(" ", $request->created_at);
         $date_mass = explode(".", $date_time_mass[0]);

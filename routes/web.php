@@ -9,7 +9,6 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\Cabinet;
 use App\Http\Controllers\Admin;
 use App\Http\Controllers\FileController;
-use Illuminate\Support\Facades\URL;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,7 +60,6 @@ Route::middleware(['role:user|admin'])->prefix('cabinet')->group(function () {
 });
 
 Route::middleware(['role:user|admin'])->prefix('fotokonkurs')->group(function () {
-
     Route::get('/fotokonkurs_add/{konkurs}', [\App\Http\Controllers\FotokonkursController::class, 'fotokonkurs_add'])->name('fotokonkurs_add');
     Route::post('/creat_uchastnik', [\App\Http\Controllers\FotokonkursController::class, 'creat_uchastnik'])->name('creat_uchastnik');
     Route::post('/set-voice', [\App\Http\Controllers\FotokonkursController::class, 'SetVoice'])->name('SetVoice');
@@ -113,6 +111,8 @@ Route::middleware(['role:admin'])->prefix('admin_panel')->group(function () {
     Route::resource('users',Admin\UserController::class);
     Route::resource('rubric', Admin\RubricsController::class);
     Route::resource('novost', Admin\NovostsController::class);
+    Route::resource('inforubric', Admin\InfoRubricsController::class);
+    Route::resource('info', Admin\InfoController::class);
     Route::resource('odinvopros',Admin\OdinvoprosController::class);
     Route::resource('page',Admin\PageController::class);
     Route::resource('ludi',Admin\LudiController::class);
@@ -127,8 +127,13 @@ Route::middleware(['role:admin'])->prefix('admin_panel')->group(function () {
     Route::resource('categorii-ozelenenia',Admin\GreenCategoryCotroller::class);
 
     Route::get('baners',[Admin\BanerController::class,'index'])->name('AllBaners');
-    Route::get('baners/{baner}/edit',[Admin\BanerController::class,'edit'])->name('baner.edit');
-    Route::put('baners/{baner}',[Admin\BanerController::class,'update'])->name('baner.update');
+    Route::resource('baner',Admin\BanerController::class);
+
+
+//    Route::get('baners/create',[Admin\BanerController::class,'create'])->name('baner.create');
+//    Route::get('baners/',[Admin\BanerController::class,'store'])->name('baner.store');
+//    Route::get('baners/{baner}/edit',[Admin\BanerController::class,'edit'])->name('baner.edit');
+//    Route::put('baners/{baner}',[Admin\BanerController::class,'update'])->name('baner.update');
     Route::post('oprosu/del/', [Admin\OprosController::class, 'del_vopros'])->name('del_vopros');
     Route::post('ozelenenie/del/', [Admin\GreenCotroller::class, 'del_poligon'])->name('del_poligon');
     Route::post('users/mass-delete/', [Admin\UserController::class, 'del_users'])->name('del_users');
@@ -146,6 +151,12 @@ Route::prefix('novosti')->group(function () {
     Route::get('/',[\App\Http\Controllers\NewsController::class,'index'])->name('AllNews');
     Route::get('/{rubric}',[\App\Http\Controllers\NewsController::class,'rubrica'])->name('LinkRubricNews');
     Route::get('/{rubric}/{novost}',[\App\Http\Controllers\NewsController::class,'new_open'])->name('LinkNew');
+
+});
+
+Route::prefix('info')->group(function () {
+
+    Route::get('/',[\App\Http\Controllers\InfoController::class,'index'])->name('info');
 
 });
 

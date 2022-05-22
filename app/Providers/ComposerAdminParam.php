@@ -7,7 +7,6 @@ use App\Models\FotoKonkursMaterial;
 use App\Models\Novost;
 use App\Models\Ozelenenie;
 use App\Models\Page;
-use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -30,8 +29,6 @@ class ComposerAdminParam extends ServiceProvider
      */
     public function boot()
     {
-
-
         View::composer('layouts.admin_layout', function($view) {
             $view->with(['new_uchastnik' => FotoKonkursMaterial::query()->where('moder','=',0)->count(),
             'new_point' => Ozelenenie::query()->where('moder','=',0)->count()]);
@@ -49,6 +46,7 @@ class ComposerAdminParam extends ServiceProvider
 
         View::composer('layouts.app_face', function($view) {
             $segment = request()->segment(1);
+
             $view->with(['segment' => $segment]);
         });
 

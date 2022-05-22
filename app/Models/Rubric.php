@@ -11,7 +11,7 @@ class Rubric extends Model
 
     public function news() {
 
-        return  $this->hasMany(Novost::class,'rubric_id','id')->where('public','=',1)->orderByDesc('created_at');
+        return  $this->hasMany(Novost::class,'rubric_id','id')->where('public','=',1)->where('report', '=', 0)->orderByDesc('created_at');
     }
 
 

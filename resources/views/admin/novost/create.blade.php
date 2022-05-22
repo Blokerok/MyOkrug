@@ -54,6 +54,14 @@
                                     <label for="exampleInputEmail1">Название</label>
                                     <input type="text" name="title" class="form-control" id="exampleInputEmail1" placeholder="Введите название статьи" value="{{session('old.title')}}" required>
                                 </div>
+                                <div class="icheck-primary d-inline">
+
+                                    <input type="checkbox" name="report" value="1"
+                                           id="checkboxSuccess3">
+                                    <label for="checkboxSuccess3">
+                                        Для отчета
+                                    </label>
+                                </div>
                                 <div class="form-group">
                                     <!-- select -->
                                     <div class="form-group">

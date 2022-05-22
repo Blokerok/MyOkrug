@@ -101,7 +101,7 @@ class UserController extends Controller
 
 
         if ($request->delete!==NULL) {
-
+           
             User::query()->whereIn('id', $request->delete)->delete();
             Voices_opros::query()->whereIn('user_id', $request->delete)->delete();
             Liked::query()->whereIn('user_id', $request->delete)->delete();

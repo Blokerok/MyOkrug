@@ -67,7 +67,10 @@ class NovostsController extends Controller
         $post->text = $request->text;
         $post->rubric_id = $request->id_rubric;
         $post->user_id = $user->id;
-
+        if ($request->report)
+            $post->report = 1;
+        else
+            $post->report = 0;
 
         session(['old' => $post]);
 
@@ -233,6 +236,11 @@ class NovostsController extends Controller
             $novost->public = 1;
         else
             $novost->public = 0;
+
+        if ($request->report)
+            $novost->report = 1;
+        else
+            $novost->report = 0;
 
         $date_time_mass = explode(" ", $request->created_at);
         $date_mass = explode(".", $date_time_mass[0]);

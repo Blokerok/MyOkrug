@@ -1,6 +1,6 @@
 @extends('layouts.admin_layout')
 
-@section('title', 'Редактировать баннер')
+@section('title', 'Добавить баннер')
 
 @section('content')
     <!-- Content Header (Page header) -->
@@ -8,7 +8,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Редактировать банер</h1>
+                    <h1 class="m-0">Добавить баннер</h1>
                 </div><!-- /.col -->
             </div><!-- /.row -->
             <a href="{{ route('AllBaners') }}">Все банеры</a>
@@ -31,38 +31,37 @@
                 <div class="col-lg-12">
                     <div class="card card-primary">
                         <!-- form start -->
-                        <form action="{{ route('baner.update', $baner['id']) }}" method="POST"
+                        <form action="{{ route('baner.store') }}" method="POST"
                               enctype="multipart/form-data">
                             @csrf
-                            @method('PUT')
+
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="title">Название банера</label>
-                                    <input type="text" value="{{ $baner['comment'] }}" name="comment" class="form-control"
-                                           id="title" placeholder="Введите SEO Title статьи" required>
+                                    <input type="text" value="" name="comment" class="form-control"
+                                           id="title" placeholder="" required>
                                 </div>
-
                                 <div class="form-group">
                                     <label for="title">Url</label>
-                                    <input type="text" value="{{ $baner['url'] }}" name="url" class="form-control"
+                                    <input type="text" value="" name="url" class="form-control"
                                            id="title" placeholder="url" required>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="title">Название банера для раздела инфо</label>
-                                    <input type="text" value="{{ $baner['name'] }}" name="name" class="form-control"
+                                    <input type="text" value="" name="name" class="form-control"
                                            id="title" placeholder="">
                                 </div>
                                 <div class="form-group">
                                     <label for="h1">Дата банера для раздела инфо</label>
-                                    <input type="text" value="{{ $baner['date'] }}" name="date" class="form-control"
-                                           id="h1" placeholder="">
+                                    <input type="text" value="" name="date" class="form-control"
+                                           id="h1" placeholder="" >
                                 </div>
 
 
                                 <div class="icheck-primary d-inline">
 
-                                    <input type="checkbox" name="status" @if($baner->status) checked @endif value="1"
+                                    <input type="checkbox" name="status" value="1"
                                            id="checkboxSuccess">
                                     <label for="checkboxSuccess">
                                        Показ банера
@@ -71,7 +70,7 @@
 
                                 <div class="icheck-primary d-inline">
 
-                                    <input type="checkbox" name="for_info" @if($baner->for_info) checked @endif value="1"
+                                    <input type="checkbox" name="for_info" value="1"
                                            id="checkboxSuccess1">
                                     <label for="checkboxSuccess1">
                                         Для раздела инфо
@@ -80,10 +79,7 @@
 
                                 <div class="form-group">
                                     <label for="feature_image">Изображение для банера</label>
-                                    <img src="@if(file_exists(storage_path('app/public/baners/'.$baner['baner'])))
-                                    {{asset('public/storage/baners/'.$baner['baner'])}}
-                                    @endif" alt="" class="img-uploaded"
-                                         style="display: block; width: 300px">
+
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input" id="image" name="baner">
                                         <label class="custom-file-label" for="image">Выберите изображение</label>

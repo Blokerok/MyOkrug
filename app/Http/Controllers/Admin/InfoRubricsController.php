@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Rubric;
+use App\Models\InfoRubric;
 use Illuminate\Http\Request;
 use Transliterate;
 
-class RubricsController extends Controller
+class InfoRubricsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +16,9 @@ class RubricsController extends Controller
      */
     public function index()
     {
-        $categories = Rubric::orderBy('created_at', 'desc')->get();
+        $categories = InfoRubric::orderBy('created_at', 'asc')->get();
 
-        return view('admin.rubric.index', [
+        return view('admin.inforubric.index', [
             'categories' => $categories
         ]);
     }
@@ -30,7 +30,7 @@ class RubricsController extends Controller
      */
     public function create()
     {
-        return view('admin.rubric.create');
+        return view('admin.inforubric.create');
     }
 
     /**
@@ -43,16 +43,9 @@ class RubricsController extends Controller
     {
         // $request->validate(['alias']=> ['required', max:255', 'unique:users']);
 
-        $new_category = new Rubric();
+        $new_category = new InfoRubric();
         $new_category->title = $request->title;
-        $new_category->description = $request->title;
-        $new_category->h1 = $request->title;
-        $new_category->alias = Transliterate::slugify($request->title);
 
-        $result = Rubric::query()->where('alias', '=', $new_category->alias)->first();
-
-        if (isset($result->id) && $result->id)
-            return redirect()->back()->with(['error' => 'Такая рубрика уже есть!','old'=>$new_category]);
         $new_category->save();
 
         return redirect()->back()->withSuccess('Рубрика была успешно добавлена!');
@@ -72,13 +65,14 @@ class RubricsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param \App\Models\Category $category
+     * @param \App\Models\InfoRubric $rubric
      * @return \Illuminate\Http\Response
      */
-    public function edit(Rubric $rubric)
+    public function edit(InfoRubric $inforubric)
     {
-        return view('admin.rubric.edit', [
-            'category' => $rubric
+
+        return view('admin.inforubric.edit', [
+            'category' => $inforubric
         ]);
     }
 
@@ -86,24 +80,17 @@ class RubricsController extends Controller
      * Update the specified resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Category $category
+     * @param \App\Models\InfoRubric $rubric
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Rubric $rubric)
+    public function update(Request $request, InfoRubric $inforubric)
     {
-        $result = Rubric::query()->where('alias', '=', $request->alias)->first();
-        if (isset($result->id) && $result->id && $rubric->alias != $request->alias)
-            return redirect()->back()->with(['error' => 'Такая рубрика c алиасом ' . $request->alias . ' уже есть!']);
 
-        $rubric->title = $request->title;
-        $rubric->description = $request->description;
-        $rubric->h1 = $request->h1;
-        $rubric->alias = $request->alias;
-        $rubric->color = $request->color;
+        $inforubric->title = $request->title;
 
-        $rubric->save();
+        $inforubric->save();
 
-        return redirect(route('rubric.index'))->with(['success' => 'Рубрика была успешно обновлена!']);
+        return redirect(route('inforubric.index'))->with(['success' => 'Рубрика была успешно обновлена!']);
     }
 
     /**
@@ -112,9 +99,12 @@ class RubricsController extends Controller
      * @param \App\Models\Category $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Rubric $rubric)
+    public function destroy(InfoRubric $inforubric)
     {
-        $rubric->delete();
+        if($inforubric->info())
+            return redirect(route('inforubric.index'))->with(['error' => 'Рубрика содержит организации']);
+
+        $inforubric->delete();
         return redirect()->back()->withSuccess('Рубрика была успешно удалена!');
     }
 }

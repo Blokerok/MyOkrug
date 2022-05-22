@@ -55,9 +55,8 @@
                                     <input type="text" name="title" class="form-control" id="exampleInputEmail1" placeholder="Введите название страницы" value="{{session('old.title')}}" required>
                                 </div>
 
-
+                                <label for="post_image">Добавьте текст страницы</label>
                                 <div class="form-group">
-                                    <label for="post_image">Добавьте текст страницы</label>
                                     <textarea name="text" class="editor">{{session('old.text')}}</textarea>
                                 </div>
 

@@ -15,7 +15,7 @@ class DvorController extends Controller
 
         foreach ($materials as $dvor)
         {
-            $coords[] = ['coord'=>explode(',',$dvor->coord),'baloon'=>'<img width="32" src="/public/images/moy-dvor.png"/><h2>'.$dvor['h1'].'</h2><a href="/moy-dvor/'.$dvor['alias'].'">Перейти в двор</a>'];
+            $coords[] = ['coord'=>explode(',',$dvor->coord),'baloon'=>'<h2>'.$dvor['h1'].'</h2><a href="/moy-dvor/'.$dvor['alias'].'">Перейти в двор</a>'];
 
         }
 

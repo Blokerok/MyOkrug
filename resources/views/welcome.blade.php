@@ -194,7 +194,7 @@
                             <a href="#" class="guid-button-link">Поесть<br/> со вкусом!</a>
                         </div>
                         <div class="col-md-4">
-                            <a href="#" class="guid-button-link">Где<br/> остановится?</a>
+                            <a href="#" class="guid-button-link">Где<br/> остановиться?</a>
                         </div>
                         <div class="col-md-4">
                             <a href="#" class="guid-button-link">Заняться<br/> спортом!</a>

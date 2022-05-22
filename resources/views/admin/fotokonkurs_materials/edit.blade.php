@@ -62,6 +62,19 @@
                                     <input type="text" value="{{ $post['title'] }}" name="title" class="form-control"
                                            id="title" placeholder="Введите SEO Title" required>
                                 </div>
+
+                                <div class="form-group">
+                                    <label>Категория</label>
+                                    <select name="category_name">
+                                        <option @if (is_null($post['category_name']) || $post['category_name']== "") selected @endif value="">Выберите категорию</option>
+                                        @foreach($categories as $category)
+                                            <option @if ($post['category_name'] == $category) selected @endif value="{{$category}}">{{$category}}</option>
+
+                                        @endforeach
+                                    </select>
+
+                                </div>
+
                                 <div class="form-group">
                                     <label for="h1">Заголовок H1</label>
                                     <input type="text" value="{{ $post['h1'] }}" name="h1" class="form-control"

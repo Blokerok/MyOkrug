@@ -27,10 +27,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $news_last = Novost::query()->where('public','=',1)->orderBy('created_at', 'DESC')->take(4)->get();
-        $materials = Odinvopros::orderBy('created_at', 'DESC')->take(3)->get();
-        $new_last = Novost::query()->where('public','=',1)->orderBy('created_at', 'DESC')->first();
-        $new_of_day = Novost::query()->where('public','=',1)->where('new_day', 1)->orderByDesc('created_at')->get();
+        $news_last = Novost::query()->where('public','=',1)->where('report', '=', 0)->orderBy('created_at', 'DESC')->take(4)->get();
+        $materials = Odinvopros::orderBy('created_at', 'DESC')->where('report', '=', 0)->take(3)->get();
+        $new_last = Novost::query()->where('public','=',1)->where('report', '=', 0)->orderBy('created_at', 'DESC')->first();
+        $new_of_day = Novost::query()->where('public','=',1)->where('report', '=', 0)->where('new_day', 1)->orderByDesc('created_at')->get();
         $baner1 = Baner::where('id','=','1')->first();
         $baner2 = Baner::where('id','=','2')->first();
 

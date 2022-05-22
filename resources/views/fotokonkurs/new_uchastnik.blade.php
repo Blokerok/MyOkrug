@@ -71,6 +71,20 @@
                             </div>
                         </div>
 
+                        @if ($konkurs->category_need)
+                        <div class="forms__field">
+                            <label>Категория</label>
+                            <select name="category_name">
+                                <option selected value="">Выберите категорию</option>
+                                @foreach($categories as $category)
+                                    <option value="{{$category}}">{{$category}}</option>
+
+                                @endforeach
+                            </select>
+
+                        </div>
+                        @endif
+
                         <div class="forms__field">
                             <div class="input-file">
                                 <label>Главное изображение для участника конкурса</label>
@@ -123,7 +137,7 @@
                         </div>
 
                             <div class="forms__field">
-                                <label>Добавьте описание вашей идеи</label>
+                                <label>Добавьте описание вашей Фотоистории</label>
                                 <div class="forms__inp">
                                     <textarea id="text" type="text"
                                               class="form-control @error('text')is-invalid @enderror"

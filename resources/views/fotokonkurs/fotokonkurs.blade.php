@@ -17,7 +17,7 @@
             <h1>Фотоконкурсы</h1>
 
 
-            <div class="promo-box">
+            <div class="promo-box fotobox">
                 <div class="promo-slider js-promo-slider">
                     @foreach($present_konkurs as $konkurs)
 

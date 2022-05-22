@@ -267,6 +267,13 @@ $(document).ready(function () {
 		$(this).closest('.tabs').find('.obj-sldier').slick('setPosition');
 	});
 
+
+	$('ul.tabs__caption').on('click', 'li:not(.active)', function() {
+		$(this)
+			.addClass('active').siblings().removeClass('active')
+			.closest('div.tabs').find('div.tabs__content').removeClass('active').eq($(this).index()).addClass('active');
+	});
+
 	/* --- item counter  --- */
 
 	$(".js-counter input").on("keydown", function (event) {

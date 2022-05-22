@@ -65,6 +65,14 @@
                                         Опубликовать
                                     </label>
                                 </div>
+                                <div class="icheck-primary d-inline">
+
+                                    <input type="checkbox" name="report" @if($post->report) checked @endif value="1"
+                                           id="checkboxSuccess3">
+                                    <label for="checkboxSuccess3">
+                                        Для отчета
+                                    </label>
+                                </div>
                                 <div class="form-group">
                                     <label for="title">SEO Title</label>
                                     <input type="text" value="{{ $post['title'] }}" name="title" class="form-control"

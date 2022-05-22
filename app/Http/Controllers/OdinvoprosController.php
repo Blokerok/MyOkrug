@@ -11,7 +11,7 @@ class OdinvoprosController extends Controller
 {
     public function index()
     {
-        $materials = Odinvopros::orderBy('created_at', 'DESC')->paginate(10);
+        $materials = Odinvopros::orderBy('created_at', 'DESC')->where('report', '=', 0)->get();
 
 
         return view('materials.materials',['materials'=>$materials]);

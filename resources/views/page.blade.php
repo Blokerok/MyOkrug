@@ -17,14 +17,14 @@
             @endif
 
             <div class="inits-card__descr">
+                @if(Request::url() != 'https://xn--c1aldgkbpy.xn--p1ai/info')
                 @if($page->img)
                     <figure class="img_news_1"><a href="{{asset('public/storage/page_image/'.$page->img)}}"
                                                   class="fb"><img
                                 src="{{asset('public/storage/page_image/tumb/tumb-'.$page->img)}}"/></a>
                     </figure>
                 @endif
-
-
+                @endif
                 {!!$page->text!!}
                 {!!$page->scrip!!}
 

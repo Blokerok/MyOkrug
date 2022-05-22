@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Fotokonkurs;
+use App\Models\PostImage;
 use App\UserLib\CreatImage;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
@@ -60,7 +62,10 @@ class FotokonkursController extends Controller
         $post->h1 = $request->title;
         $post->description = $request->title;
         $post->text = $request->text;
-
+        if ($request->category_need)
+            $post->category_need = 1;
+        else
+            $post->category_need = 0;
 
         session(['old' => $post]);
 
@@ -176,6 +181,10 @@ class FotokonkursController extends Controller
         $novost->alias = $request->alias;
         $novost->description = $request->description;
         $novost->h1 = $request->h1;
+        if ($request->category_need)
+            $novost->category_need = 1;
+        else
+            $novost->category_need = 0;
 
         if ($request->stop)
             $novost->stop = 1;

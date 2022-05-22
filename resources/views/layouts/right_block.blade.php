@@ -4,15 +4,13 @@
         <div class="side-box__header">
             <h3 class="side-box__title">Глава округа</h3>
             <div class="side-soc">
-                <a href="https://www.instagram.com/viktornevolin/" class="side-soc__item" target="_blank"><img
-                        src="{{ asset("public/images/soc-icon-inst.png")}}"
-                        alt=""/></a>
-                <a href="https://www.facebook.com/viktor.nevolin.9" class="side-soc__item" target="_blank"><img
-                        src="{{ asset("public/images/soc-icon-fb.png")}}" alt=""/></a>
                 <a href="https://vk.com/viktornevolin" class="side-soc__item" target="_blank"><img
                         src="{{ asset("public/images/soc-icon-vk.png")}}" alt=""/></a>
                 <a href="https://ok.ru/profile/578423895788" class="side-soc__item" target="_blank"><img
                         src="{{ asset("public/images/soc-icon-youtube.png")}}"
+                        alt=""/></a>
+                        <a href="https://t.me/viktornevolin" class="side-soc__item" target="_blank"><img
+                        src="{{ asset("public/images/soc-icon-tg.png")}}"
                         alt=""/></a>
             </div>
         </div>
@@ -69,8 +67,8 @@
     </div-->
 
     <div class="side-box">
-        <a href="{{route('AllDvors')}}" class="side-banan-moi-dvor">
-					<img src="/img/moydvor.jpg" border="0" />
+        <a href="/info" class="side-banan-moi-dvor">
+					<img src="/img/infookrug.jpg" border="0" />
         </a>
     </div>
 
